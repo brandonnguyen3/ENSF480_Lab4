@@ -8,11 +8,11 @@
 
 #include <string>
 
-// Interface for Moveable, pure virtual functions
+// Interface for Moveable
 class Moveable {
 public:
-    virtual void forward() = 0; 
-    virtual void backward() = 0;
+    void forward(int n);
+    void backward(int n);
 };
 
 class Resizable {
@@ -21,20 +21,25 @@ public:
     void shrink(int n); 
 };
 
-// Class Vehicle, which inherits from Moveable
-class Vehicle : public Moveable {
+// Class Vehicle
+class Vehicle : public Resizable, public Moveable {
 protected:
     string name; 
 public:
     Vehicle(const string& name) : name(name) {}
     void move(); 
+    void forward(int n);
+    void backward(int n);
+    void enlarge(int n);
+    void shrink(int n); 
 };
 
-// Class car, derived from Vehicle
+// Class car, inherited from Vehicle
 class Car : public Vehicle {
 private:
     int seats; 
 public:
     Car(const string& name, int seats) : Vehicle(name), seats(seats) {}
     void turn();
+    void move(); 
 };
