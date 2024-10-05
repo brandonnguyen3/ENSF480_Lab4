@@ -8,28 +8,28 @@
 
 #include <string>
 
-// Interface for Moveable
+// Moveable and Resizable are interfaces so it should be an abstract class.
 class Moveable {
 public:
-    void forward(int n);
-    void backward(int n);
+    virtual void forward() = 0; 
+    virtual void backward() = 0;
 };
 
 class Resizable {
 public:
-    void enlarge(int n);
-    void shrink(int n); 
+    virtual void enlarge(int n) = 0; 
+    virtual void shrink(int n) = 0;
 };
 
-// Class Vehicle
+// Class Vehicle has to implement the functions of the interfaces
 class Vehicle : public Resizable, public Moveable {
 protected:
     string name; 
 public:
     Vehicle(const string& name) : name(name) {}
     void move(); 
-    void forward(int n);
-    void backward(int n);
+    void forward();
+    void backward();
     void enlarge(int n);
     void shrink(int n); 
 };
@@ -42,4 +42,8 @@ public:
     Car(const string& name, int seats) : Vehicle(name), seats(seats) {}
     void turn();
     void move(); 
+    void forward();
+    void backward();
+    void enlarge(int n);
+    void shrink(int n); 
 };
