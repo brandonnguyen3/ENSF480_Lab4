@@ -3,7 +3,7 @@
 * Assignment: Lab 4 Exercise C
 * Lab section: B02
 * Completed by: Darin Vicaldo, Brandon Nguyen
-* Development Date: September 30, 2024
+* Development Date: October 5, 2024
 */
 
 #include <string>
@@ -32,7 +32,7 @@ public:
     void shrink(int n) override; 
 };
 
-class Car : public Vehicle {
+class Car final: public Vehicle {
 private:
     int seats; 
 public:
