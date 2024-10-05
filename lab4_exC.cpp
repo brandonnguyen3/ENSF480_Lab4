@@ -8,7 +8,6 @@
 
 #include <string>
 
-// Moveable and Resizable are interfaces so it should be an abstract class.
 class Moveable {
 public:
     virtual void forward() = 0; 
@@ -21,29 +20,28 @@ public:
     virtual void shrink(int n) = 0;
 };
 
-// Class Vehicle has to implement the functions of the interfaces
 class Vehicle : public Resizable, public Moveable {
 protected:
-    string name; 
+    std::string name; 
 public:
-    Vehicle(const string& name) : name(name) {}
+    Vehicle(const std::string& name);
     void move(); 
-    void forward();
-    void backward();
-    void enlarge(int n);
-    void shrink(int n); 
+    void forward() override;
+    void backward() override;
+    void enlarge(int n) override;
+    void shrink(int n) override; 
 };
 
-// Class car, inherited from Vehicle
 class Car : public Vehicle {
 private:
     int seats; 
 public:
-    Car(const string& name, int seats) : Vehicle(name), seats(seats) {}
+    Car(const std::string& name, int seats);
     void turn();
-    void move(); 
-    void forward();
-    void backward();
-    void enlarge(int n);
-    void shrink(int n); 
+    void move() override; 
+    void forward() override;
+    void backward() override;
+    void enlarge(int n) override;
+    void shrink(int n) override; 
 };
+
